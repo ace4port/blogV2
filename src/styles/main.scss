@@ -1,0 +1,22 @@
+// Shamelessly taken from - https://github.com/KittyGiraudel/sass-boilerplate/tree/master/stylesheets
+
+@import 'abstracts/variables';
+@import 'abstracts/functions';
+@import 'abstracts/mixins';
+
+@import 'vendors/normalize';
+
+@import 'base/base';
+@import 'base/typography';
+@import 'base/helpers';
+
+@import 'layout/header';
+@import 'layout/footer';
+
+@import './components/buttons';
+@import './components/modals';
+@import './components/toast';
+@import './components/loader';
+
+//   @import 'pages/home';
+//   @import 'themes/default';

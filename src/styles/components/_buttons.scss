@@ -1,0 +1,61 @@
+%button {
+  max-height: 42px;
+  transition: all 50ms linear;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  text-align: center;
+  text-transform: capitalize;
+
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+
+  font-size: 1.1rem;
+  margin: 5px;
+  padding: 15px 25px;
+  color: $light;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.btn {
+  @extend %button;
+
+  &__round {
+    border-radius: 2rem;
+  }
+
+  &--primary {
+    background-color: $primary;
+  }
+  &--secondary {
+    background-color: $secondary;
+  }
+  &--outlined {
+    background-color: transparent;
+    border: 2px solid $primary;
+    color: $primary;
+  }
+  &--danger {
+    background-color: $danger;
+  }
+  &--info {
+    background-color: $info;
+  }
+  &--warning {
+    background-color: $warning;
+  }
+  &--disabled {
+    cursor: not-allowed;
+    background-color: $gray;
+
+    &:hover {
+      transform: none;
+    }
+  }
+}
