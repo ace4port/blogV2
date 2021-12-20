@@ -19,7 +19,7 @@ const Button = ({
 }) => (
   <button
     onClick={handleClick}
-    type="button"
+    type={type}
     className={`btn ${rounded ? 'btn__round' : ''} btn--${variant} `}
     disabled={disabled === 'true' || variant === 'disabled' ? true : false}
     {...props}

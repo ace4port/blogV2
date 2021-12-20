@@ -12,11 +12,17 @@
 
 @import 'layout/header';
 @import 'layout/footer';
+@import 'layout/nav';
 
 @import './components/buttons';
 @import './components/modals';
 @import './components/toast';
 @import './components/loader';
+@import './components/card';
 
-//   @import 'pages/home';
+@import './components/blog/authorCard';
+
+@import 'pages/blog';
+@import 'pages/guide';
+
 //   @import 'themes/default';

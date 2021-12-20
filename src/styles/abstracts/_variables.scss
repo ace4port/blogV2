@@ -2,21 +2,34 @@
 // This file contains all application-wide Sass variables.
 // -----------------------------------------------------------------------------
 
-/// Regular font family
-/// @type List
-$text-font-stack: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
+$heading-font-stack: 'Poppins', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
+$text-font-stack: 'Nunito', 'Inter', 'Open Sans', 'Arial', sans-serif !default;
 
-/// Code (monospace) font family
-/// @type List
-$code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco', monospace !default;
+$heading-color: #58468c !default;
+$text-color: #716c80 !default;
+$text-secondary: #ee2852 !default;
 
-/// Copy text color
-/// @type Color
-$text-color: rgb(34, 34, 34) !default;
+$link-color: #58468c;
+$link-active: #ff8a73;
 
-/// Main brand color
-/// @type Color
-$brand-color: rgb(229, 0, 80) !default;
+$primary: #363865;
+$secondary: #ee2852;
+$tertiary: #716c80;
+$danger: #ec2323;
+$warning: #f1af34;
+$info: #712aa0;
+
+$light: #ffffff;
+$dark: #000000;
+$gray: #929292;
+
+$success: #31da88;
+$success: #2ecc71;
+
+// $gray-light:
+// $gray-dark:
+
+$brand-color: #e50050 !default;
 
 /// Light grey
 /// @type Color
@@ -29,22 +42,6 @@ $mid-grey: rgb(153, 153, 153) !default;
 /// Dark grey
 /// @type Color
 $dark-grey: rgb(68, 68, 68) !default;
-
-$primary: #363865;
-$secondary: #1fb86e;
-// $tertiary:
-$danger: #b81f1f;
-$success: #1fb86e;
-$warning: #df9e25;
-$info: #2929b3;
-$light: #ffffff;
-$dark: #000000;
-// $link:
-// $white:
-// $black:
-$gray: #929292;
-// $gray-light:
-// $gray-dark:
 
 /// Container's maximum width
 /// @type Length

@@ -1,42 +1,17 @@
-import React, { useEffect } from 'react'
-import 'styles/main.scss'
+import React from 'react'
 
+import Routes from 'routes'
 import ErrorBoundary from 'components/ErrorBoundary'
-import UI from 'pages/Guide/UI'
+
 import { fireToast } from 'components/ui/Toast'
+import { useIsOnline } from 'hooks/useIsOnline'
 
-const useIsOnline = () => {
-  const [isOnline, setIsOnline] = React.useState(window.navigator.onLine)
-
-  useEffect(() => {
-    const handleOnline = () => setIsOnline(true)
-    const handleOffline = () => setIsOnline(false)
-    function handleOnload() {
-      if (navigator.onLine) {
-        console.log("We're online!")
-        handleOnline()
-      } else {
-        console.log("We're offline...")
-        handleOffline()
-      }
-    }
-
-    window.addEventListener('load', handleOnload)
-    window.addEventListener('online', handleOnline)
-    window.addEventListener('offline', handleOffline)
-    return () => {
-      window.removeEventListener('load', handleOnload)
-      window.removeEventListener('online', handleOnline)
-      window.removeEventListener('offline', handleOffline)
-    }
-  }, [])
-
-  return isOnline
-}
+import 'styles/main.scss'
+import { Provider } from 'react-redux'
+import { store } from 'store'
 
 function App() {
   const isOnline = useIsOnline()
-  console.log(isOnline)
 
   if (!isOnline) {
     fireToast('warning', 'You are offline')
@@ -48,7 +23,9 @@ function App() {
 
   return (
     <ErrorBoundary location="app">
-      <UI />
+      <Provider store={store}>
+        <Routes />
+      </Provider>
     </ErrorBoundary>
   )
 }
