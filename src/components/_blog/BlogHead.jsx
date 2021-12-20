@@ -2,7 +2,7 @@ import React from 'react'
 import { FiBarChart2 } from 'react-icons/fi'
 import { MdAccessTime } from 'react-icons/md'
 
-const BlogHead = ({ blogImg, title, category, views, timeToRead, created }) => {
+const BlogHead = ({ blogImg, title, description, category, views, timeToRead, created }) => {
   return (
     <div className="bloghead">
       <div className="bloghead__top">
@@ -13,7 +13,7 @@ const BlogHead = ({ blogImg, title, category, views, timeToRead, created }) => {
         </p>
         <p className="time">
           <MdAccessTime />
-          {timeToRead + 'min read'}
+          {timeToRead + ' min read'}
         </p>
         <p className="time">
           <MdAccessTime />
@@ -22,6 +22,7 @@ const BlogHead = ({ blogImg, title, category, views, timeToRead, created }) => {
       </div>
       {/* <h1 className="blog__title">{'What Would It Take to Shut Down the Entire Internet?'}</h1> */}
       <h1 className="blog__title">{title}</h1>
+      <h5 className="blog__title">{description}</h5>
       <img className="blog__img" src={blogImg} alt="blog featured" />
     </div>
   )

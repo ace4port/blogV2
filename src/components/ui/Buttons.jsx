@@ -1,4 +1,6 @@
 import React from 'react'
+import { TickIcon } from './icons/Tick'
+import { Spinner } from './loaders/Spinners'
 
 /**
  *
@@ -29,6 +31,22 @@ const Button = ({
 )
 
 export default Button
+
+/**
+ * For api calls- states indicate status
+ * @param {status} [loading, error, success]
+ * @returns
+ */
+export const AnimatedButton = ({ handleClick, status, children, ...props }) => {
+  const loading = status === 'loading'
+  const success = status === 'success'
+  const error = status === 'error'
+  return (
+    <button onClick={handleClick} className={`btn btn--primary button ${status}`} {...props}>
+      {loading ? <Spinner /> : success ? <TickIcon /> : error ? '!' : children}
+    </button>
+  )
+}
 
 export const RoundButton = (props) => <Button {...props} rounded />
 

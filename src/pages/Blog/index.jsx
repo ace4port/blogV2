@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import BlogHead from 'components/_blog/BlogHead'
 import BlogBody from 'components/_blog/BlogBody'
@@ -12,17 +12,17 @@ import CategoriesCard from 'components/_blog/Cards/CategoriesCard'
 import { fetchOne } from 'api'
 import useFetch from 'hooks/useFetch'
 
+const id = 2
+
 const Blog = () => {
-  const { loading, data, error } = useFetch(fetchOne, 2)
-
-  useEffect(() => console.log(loading, data, error), [loading])
-
+  const [data, loading, error] = useFetch(fetchOne, id)
   return (
     <div>
       {loading && <h2>Loading .... </h2>}
+      {error && <h4>{error.message}</h4>}
       <div className="blog-container">
         <BlogMain blog={data} />
-        <BlogAside />
+        <BlogAside author={data?.user} />
       </div>
     </div>
   )
@@ -31,8 +31,8 @@ const Blog = () => {
 export default Blog
 
 const BlogMain = ({ blog }) => {
-  console.log(Date(blog.created_at))
   const blogImg =
+    blog.thumbnail ??
     'https://images.pexels.com/photos/8929853/pexels-photo-8929853.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'
   return (
     <div className="blog-container__main">
@@ -40,7 +40,7 @@ const BlogMain = ({ blog }) => {
         title={blog.title}
         description={blog.description}
         blogImg={blogImg}
-        category={'Technology'}
+        category={blog?.category?.category_name}
         views={blog.views}
         // created={Date(blog.created_at)}
         created={'20 Dec 2021'}
@@ -48,16 +48,24 @@ const BlogMain = ({ blog }) => {
       />
 
       <BlogBody body={blog.body} />
-      <BlogBottom />
+
+      <BlogBottom
+        comments={blog.comments}
+        likes={blog?.likes?.length}
+        author={blog?.user}
+        prev={blog?.previous_post}
+        next={blog?.next_post}
+      />
+
       <CommentSection />
     </div>
   )
 }
 
-const BlogAside = () => {
+const BlogAside = ({ author }) => {
   return (
     <div className="blog-container__aside">
-      <AuthorInfoCard />
+      <AuthorInfoCard authorThumb={author?.avatar} name={author?.full_name} info={author?.description} />
       <CategoriesCard />
       <TopPostsCard />
       {/* <FollowUsCard /> */}
@@ -67,19 +75,26 @@ const BlogAside = () => {
 }
 
 /* BLog structure --
-body: "aasdasdasdasdasdasdadasd"
-description: "asdasdascasca dadsca sdvsdvd sfvsddcsdcda"
+-- Head --
 title: "asdsad"
-views: 11
-user: 1
-
 thumbnail: null
-category: 2
 created_at: "2021-12-19T21:29:05.469212+05:45"
-updated_at: "2021-12-20T09:07:44.918527+05:45"
-likes: []
-id: 2
+category: {id: 2, category_name: 'Programming'}
+description: "asdasdascasca dadsca sdvsdvd sfvsddcsdcda"
+views: 11
 
+-- Body --
+body: "aasdasdasdasdasdasdadasd"
+
+-- Aside --
+user: {id: 1, full_name: 'admin', avatar: '', description: ''}
+
+-- Bottom --
+comments: 0
+likes: []
+updated_at: "2021-12-20T09:07:44.918527+05:45"
 next_post: {id: 2, title: 'asdsad', thumbnail: ''}
 previous_post: {id: 2, title: 'asdsad', thumbnail: ''}
+
+id: 2
 */

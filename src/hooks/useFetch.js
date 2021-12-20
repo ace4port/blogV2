@@ -14,19 +14,20 @@ export const useFetch = (getData, params) => {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true)
+      setError(null)
       try {
         const result = await getData(params)
         setData(result.data)
-        setLoading(false)
       } catch (error) {
-        setLoading(false)
-        setError(error)
+        setError({ status: error.response.status, message: error.response.statusText })
       }
+      setLoading(false)
     }
+
     fetchData()
   }, [getData, params])
 
-  return { data, loading, error }
+  return [data, loading, error]
 }
 
 export default useFetch
