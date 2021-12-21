@@ -64,11 +64,13 @@
 .blogbottom {
   &__info {
     display: flex;
+    margin: 2rem 0;
     justify-content: space-between;
-    div {
+    .icons {
       display: flex;
       gap: 1rem;
       svg {
+        vertical-align: middle;
         margin-right: 0.5rem;
       }
     }

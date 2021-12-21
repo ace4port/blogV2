@@ -1,12 +1,13 @@
 import React from 'react'
 import { FaTwitter, FaLinkedin, FaHeart, FaFacebookF, FaCommentAlt, FaRegCommentAlt, FaRegHeart } from 'react-icons/fa'
+import { PlainButton } from 'components/ui/Buttons'
 import AuthorInfoCard from './Cards/AuthorInfoCard'
 
 const BlogBottom = ({ likes, comments, author, prev, next }) => {
   return (
     <div className="blogbottom">
       <div className="blogbottom__info">
-        <div>
+        <div className="icons">
           <p>
             Share
             <FaFacebookF />
@@ -14,14 +15,14 @@ const BlogBottom = ({ likes, comments, author, prev, next }) => {
             <FaLinkedin />
           </p>
         </div>
-        <div className="likeComment">
+        <div className="icons">
           <p>
             {+comments ? <FaCommentAlt /> : <FaRegCommentAlt />}
-            {comments} comments
+            <a href="#comments">{comments} comments</a>
           </p>
           <p>
             {+likes ? <FaHeart /> : <FaRegHeart />}
-            {likes} Like
+            <PlainButton>{likes} Like</PlainButton>
           </p>
         </div>
       </div>
@@ -34,8 +35,8 @@ const BlogBottom = ({ likes, comments, author, prev, next }) => {
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga accusantium pariatur sit id officia a saepe
             debitis asperiores blanditiis est.{' '}
-          </p> */}
-        {/* </div> */}
+          </p>  
+        </div> */}
       </div>
 
       <div className="blogbottom__others">

@@ -5,6 +5,8 @@ import { fireToast } from 'components/ui/Toast'
 import MediaModal from 'components/ui/Modals/MediaModal'
 import SimpleModal from 'components/ui/Modals/SimpleModal'
 import Loader from 'components/ui/Loader'
+import { PlainButton } from 'components/ui/Buttons'
+import Avatar from 'components/ui/Avatar'
 
 const UI = () => {
   const [modalOpen, setModalOpen] = React.useState(false)
@@ -88,7 +90,12 @@ const UI = () => {
             </RoundButton>
           ))}
         </div>
+        <div className="container">
+          <h4>Plain buttons</h4>
+          <PlainButton>Acts like Link</PlainButton>
+        </div>
       </div>
+
       <div>
         <h2>Toasts</h2>
         <div className="container">
@@ -115,6 +122,29 @@ const UI = () => {
         <Loader height="12" width="2" />
         <Loader height="12" width="6" />
         <Loader height="24" width="8" />
+      </div>
+
+      <div className="container">
+        <h4>Avatars</h4>
+        <div>
+          <p>hi</p>
+          <Avatar size="large" />
+          <Avatar size="meduim" />
+          <Avatar size="small" />
+          <Avatar
+            size="small"
+            thumb="https://secure.gravatar.com/avatar/77df9ef82f62f8c10b75524bfb9222ae?s=40&d=mm&r=g"
+          />
+          <Avatar
+            size="meduim"
+            thumb="https://secure.gravatar.com/avatar/77df9ef82f62f8c10b75524bfb9222ae?s=40&d=mm&r=g"
+          />
+          <Avatar
+            size="large"
+            thumb="https://secure.gravatar.com/avatar/77df9ef82f62f8c10b75524bfb9222ae?s=40&d=mm&r=g"
+          />
+          <p>hh</p>
+        </div>
       </div>
     </div>
   )

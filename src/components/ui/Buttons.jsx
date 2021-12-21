@@ -51,3 +51,5 @@ export const AnimatedButton = ({ handleClick, status, children, ...props }) => {
 export const RoundButton = (props) => <Button {...props} rounded />
 
 export const OutlinedButton = (props) => <Button {...props} variant="outlined" />
+
+export const PlainButton = (props) => <Button {...props} variant="plain" />

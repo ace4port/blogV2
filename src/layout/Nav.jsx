@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { publicRoutes } from 'routes/pubRoutes'
 import { BsSearch } from 'react-icons/bs'
+import { PlainButton } from 'components/ui/Buttons'
 
 const Nav = () => (
   <nav className="nav">
@@ -19,11 +20,11 @@ const Nav = () => (
     </div>
 
     <div className="nav__cta">
-      <button className="nav__btn">
+      <PlainButton>
         <BsSearch />
-      </button>
-      <button className="nav__btn">Log In</button>
-      <button className="nav__btn">Register</button>
+      </PlainButton>
+      <PlainButton>Log In</PlainButton>
+      <PlainButton>Register</PlainButton>
     </div>
   </nav>
 )

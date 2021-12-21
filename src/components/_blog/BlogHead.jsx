@@ -1,6 +1,7 @@
 import React from 'react'
 import { FiBarChart2 } from 'react-icons/fi'
 import { MdAccessTime } from 'react-icons/md'
+import { BsCalendarFill } from 'react-icons/bs'
 
 const BlogHead = ({ blogImg, title, description, category, views, timeToRead, created }) => {
   return (
@@ -16,7 +17,7 @@ const BlogHead = ({ blogImg, title, description, category, views, timeToRead, cr
           {timeToRead + ' min read'}
         </p>
         <p className="time">
-          <MdAccessTime />
+          <BsCalendarFill />
           {created}
         </p>
       </div>

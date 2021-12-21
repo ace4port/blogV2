@@ -36,13 +36,6 @@
     }
   }
 
-  &__btn {
-    all: unset;
-    @extend a;
-    cursor: pointer;
-    // accecibility focus outline missing
-  }
-
   &__logo {
     a {
       font-size: 1.8rem;

@@ -58,6 +58,17 @@
       transform: none;
     }
   }
+  &--plain {
+    all: unset;
+    @extend a;
+    cursor: pointer;
+    &:hover {
+      transform: none;
+    }
+    &:focus {
+      outline: 2px solid $primary;
+    }
+  }
 }
 
 .button {
@@ -74,10 +85,12 @@
   }
   &.success {
     @extend .loading;
+    cursor: pointer;
     background-color: $success;
   }
   &.error {
     @extend .loading;
+    cursor: pointer;
     background-color: $danger;
     font-size: 2rem;
     font-weight: 800;

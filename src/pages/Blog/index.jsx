@@ -11,6 +11,7 @@ import CategoriesCard from 'components/_blog/Cards/CategoriesCard'
 
 import { fetchOne } from 'api'
 import useFetch from 'hooks/useFetch'
+import { getDate } from 'functions/toDate'
 
 const id = 2
 
@@ -42,11 +43,11 @@ const BlogMain = ({ blog }) => {
         blogImg={blogImg}
         category={blog?.category?.category_name}
         views={blog.views}
-        // created={Date(blog.created_at)}
-        created={'20 Dec 2021'}
+        created={getDate(blog?.created_at)}
         timeToRead={Math.ceil(Math.random() * 10)}
       />
 
+      {/* To do: Create shareable links for aside buttonss */}
       <BlogBody body={blog.body} />
 
       <BlogBottom
@@ -65,6 +66,7 @@ const BlogMain = ({ blog }) => {
 const BlogAside = ({ author }) => {
   return (
     <div className="blog-container__aside">
+      {/* Search bar component -- */}
       <AuthorInfoCard authorThumb={author?.avatar} name={author?.full_name} info={author?.description} />
       <CategoriesCard />
       <TopPostsCard />
