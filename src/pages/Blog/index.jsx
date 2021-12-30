@@ -1,4 +1,8 @@
 import React from 'react'
+import useFetch from 'hooks/useFetch'
+import { useParams } from 'react-router-dom'
+import { fetchOne } from 'api'
+import { getDate } from 'functions/toDate'
 
 import BlogHead from 'components/_blog/BlogHead'
 import BlogBody from 'components/_blog/BlogBody'
@@ -8,23 +12,25 @@ import CommentSection from 'components/_blog/CommentSection'
 import TopPostsCard from 'components/_blog/Cards/TopPosts'
 import AuthorInfoCard from 'components/_blog/Cards/AuthorInfoCard'
 import CategoriesCard from 'components/_blog/Cards/CategoriesCard'
-
-import { fetchOne } from 'api'
-import useFetch from 'hooks/useFetch'
-import { getDate } from 'functions/toDate'
-
-const id = 2
+import Loader from 'components/ui/Loader'
 
 const Blog = () => {
+  const { id } = useParams()
   const [data, loading, error] = useFetch(fetchOne, id)
+  // todo: Thumbnail make it base64
   return (
     <div>
-      {loading && <h2>Loading .... </h2>}
-      {error && <h4>{error.message}</h4>}
-      <div className="blog-container">
-        <BlogMain blog={data} />
-        <BlogAside author={data?.user} />
-      </div>
+      {loading && <LoadingSkel />}
+      {error ? (
+        <h4>
+          {error?.status} {error?.message}
+        </h4>
+      ) : (
+        <div className="blog-container">
+          <BlogMain blog={data} />
+          <BlogAside author={data?.user} />
+        </div>
+      )}
     </div>
   )
 }
@@ -67,7 +73,7 @@ const BlogAside = ({ author }) => {
   return (
     <div className="blog-container__aside">
       {/* Search bar component -- */}
-      <AuthorInfoCard authorThumb={author?.avatar} name={author?.full_name} info={author?.description} />
+      <AuthorInfoCard avatar={author?.avatar} name={author?.full_name} description={author?.description} />
       <CategoriesCard />
       <TopPostsCard />
       {/* <FollowUsCard /> */}
@@ -76,27 +82,19 @@ const BlogAside = ({ author }) => {
   )
 }
 
-/* BLog structure --
--- Head --
-title: "asdsad"
-thumbnail: null
-created_at: "2021-12-19T21:29:05.469212+05:45"
-category: {id: 2, category_name: 'Programming'}
-description: "asdasdascasca dadsca sdvsdvd sfvsddcsdcda"
-views: 11
-
--- Body --
-body: "aasdasdasdasdasdasdadasd"
-
--- Aside --
-user: {id: 1, full_name: 'admin', avatar: '', description: ''}
-
--- Bottom --
-comments: 0
-likes: []
-updated_at: "2021-12-20T09:07:44.918527+05:45"
-next_post: {id: 2, title: 'asdsad', thumbnail: ''}
-previous_post: {id: 2, title: 'asdsad', thumbnail: ''}
-
-id: 2
-*/
+const LoadingSkel = () => (
+  <div className="blog-container">
+    <div className="blog-container__main">
+      <Loader width={10} />
+      <Loader height={48} />
+      <Loader width={6} />
+      <Loader height={512} />
+      <Loader height={256} />
+    </div>
+    <div className="blog-container__aside">
+      <Loader height={128} />
+      <Loader height={256} />
+      <Loader height={256} />
+    </div>
+  </div>
+)

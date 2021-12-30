@@ -1,5 +1,5 @@
-import axios from "axios"
-const url = "https://blog-api7991.herokuapp.com/blog-api"
+import axios from 'axios'
+const url = 'https://blog-api7991.herokuapp.com/blog-api'
 
 // comment crud
 export const fetchComments = (id) => axios.get(`${url}/posts/${id}/comments/`)

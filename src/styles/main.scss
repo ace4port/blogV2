@@ -10,19 +10,9 @@
 @import 'base/typography';
 @import 'base/helpers';
 
-@import 'layout/header';
-@import 'layout/footer';
-@import 'layout/nav';
+@import 'layout';
 
-@import './components/buttons';
-@import './components/modals';
-@import './components/toast';
-@import './components/loader';
-@import './components/card';
-@import './components/spinner';
-@import './components/avatar';
-
-@import './components/blog/authorCard';
+@import './components';
 
 @import 'pages/blog';
 @import 'pages/guide';

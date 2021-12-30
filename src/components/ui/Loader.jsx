@@ -6,7 +6,7 @@ import React from 'react'
  * @param {width: number} width - like flexBox- between 1 and 12
  * @returns Loader
  */
-const Loader = ({ height, width = 12 }) => (
+const Loader = ({ height = 12, width = 12 }) => (
   <div
     className="loader"
     style={{

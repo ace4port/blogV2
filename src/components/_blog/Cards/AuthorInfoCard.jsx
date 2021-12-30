@@ -1,17 +1,19 @@
 import React from 'react'
 
 const AuthorInfoCard = ({
-  authorThumb = 'https://foton.qodeinteractive.com/wp-content/uploads/2018/06/blog-sidebar-img-1.png',
+  avatar,
   name = 'John Doe',
-  info = 'Lorem ipsum dolor sit amet, conse ctetuer adipiscing elit diami nonum nibhie vixtus euimos vitae.',
+  description = 'Lorem ipsum dolor sit amet, conse ctetuer adipiscing elit diami nonum nibhie vixtus euimos vitae.',
 }) => {
+  const authorThumb = avatar ?? 'https://foton.qodeinteractive.com/wp-content/uploads/2018/06/blog-sidebar-img-1.png'
+  // To do: Add link to author page using id
   return (
     <div className="card authorCard">
       <Avatar thumb={authorThumb} />
       <a href="#author">
         <h4 className="authorCard__name">{name}</h4>
       </a>
-      <p className="authorCard__info">{info}</p>
+      <p className="authorCard__info">{description}</p>
     </div>
   )
 }

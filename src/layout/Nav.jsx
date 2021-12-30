@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { publicRoutes } from 'routes/pubRoutes'
-import { BsSearch } from 'react-icons/bs'
+import { navLinks } from 'routes/pubRoutes'
 import { PlainButton } from 'components/ui/Buttons'
+import ModalButton from 'components/ui/Modals/Modal'
+import LoginForm from 'components/forms/LogInForm'
+import RegisterForm from 'components/forms/RegisterForm'
 
 const Nav = () => (
   <nav className="nav">
@@ -12,21 +14,33 @@ const Nav = () => (
 
     <div className="nav__links">
       <NavLink to="/">Home</NavLink>
-      {publicRoutes.map((route) => (
+      {navLinks.map((route) => (
         <NavLink key={route.name} to={route.path}>
           {route.name}
         </NavLink>
       ))}
     </div>
 
-    <div className="nav__cta">
-      <PlainButton>
-        <BsSearch />
-      </PlainButton>
-      <PlainButton>Log In</PlainButton>
-      <PlainButton>Register</PlainButton>
-    </div>
+    <NavAuth />
   </nav>
 )
 
 export default Nav
+
+const NavAuth = () => {
+  return (
+    <div className="nav__cta">
+      {/* Search function --- */}
+      {/* <PlainButton>
+        <BsSearch />
+      </PlainButton> */}
+
+      <ModalButton Btn={PlainButton} label="Log in" title="Log in">
+        {(close) => <LoginForm close={close} target="modal" />}
+      </ModalButton>
+      <ModalButton Btn={PlainButton} label="Register" title="Register new account">
+        {(close) => <RegisterForm close={close} target="modal" />}
+      </ModalButton>
+    </div>
+  )
+}

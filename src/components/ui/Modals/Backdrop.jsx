@@ -9,3 +9,7 @@ const Backdrop = ({ isActive, close }) => {
 }
 
 export default Backdrop
+
+export const LightBackdrop = ({ isActive, close }) => {
+  return isActive ? <div onClick={close} className="modal-backdrop--light"></div> : null
+}

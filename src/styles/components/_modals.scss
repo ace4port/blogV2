@@ -1,7 +1,6 @@
 // ============================================
 //     Modals
 // ============================================
-// to-do clean up
 
 .simple-modal {
   position: fixed;
@@ -13,40 +12,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
-  box-sizing: border-box;
   transition: all 0.4s ease-in-out;
 
   .modal-content {
     width: 90%;
     padding: 50px 40px 40px 40px;
     background-color: $light;
-    // @include flex-start-only(column);
+    display: flex;
+    flex-direction: column;
 
     .modal-title-container {
-      // @include flex-start-only();
-      width: 100%;
-      flex: 1;
-
-      .title-left {
-        flex: 0.5;
-        .modal-title {
-          margin-bottom: 10px;
-        }
-
-        .modal-sub-title {
-          margin-left: 5px;
-          color: gray;
-          margin-top: 10px;
-        }
-      }
-
-      .title-right {
-        flex: 0.5;
+      display: flex;
+      flex-direction: column;
+      h4 {
+        margin-bottom: 0.2rem;
       }
     }
+
     .modal-body {
-      padding-top: 10px;
       width: 100%;
     }
   }
@@ -70,4 +53,8 @@
   left: 0;
   top: 0;
   background-color: rgba(0, 0, 0, 0.5);
+}
+.modal-backdrop--light {
+  @extend .modal-backdrop;
+  background-color: rgba(0, 0, 0, 0.1);
 }

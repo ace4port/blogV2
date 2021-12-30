@@ -1,0 +1,31 @@
+.dropdown-container {
+  position: absolute;
+  top: 68px;
+  width: 200px;
+  transform: translateX(-10%);
+  z-index: 70;
+
+  //   background-color: rgb(235, 235, 198);
+  background-color: $light;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  border-radius: 0.4rem;
+
+  a {
+    display: block;
+    padding: 0.5rem;
+    transition: all 0.2s ease-in-out;
+
+    svg {
+      margin-right: 0.3rem;
+      vertical-align: middle;
+    }
+    &:hover {
+      color: black;
+      background-color: rgb(202, 202, 167);
+    }
+  }
+}

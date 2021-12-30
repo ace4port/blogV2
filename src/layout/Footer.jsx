@@ -38,11 +38,15 @@ const Footer = () => {
           </p>
         </div>
       </div>
-      <div className="footer__bottom">
-        <p>&copy; ace4port and STmg. All rights reserved</p>
-      </div>
+      <Copyright />
     </div>
   )
 }
 
 export default Footer
+
+export const Copyright = () => (
+  <div className="footer__bottom">
+    <p>&copy; ace4port and STmg. All rights reserved</p>
+  </div>
+)

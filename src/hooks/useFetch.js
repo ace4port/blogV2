@@ -16,12 +16,13 @@ export const useFetch = (getData, params) => {
       setLoading(true)
       setError(null)
       try {
-        const result = await getData(params)
-        setData(result.data)
+        await getData(params)
+          .then((result) => setData(result.data))
+          .then(() => setTimeout(() => setLoading(false), 1000))
       } catch (error) {
         setError({ status: error.response.status, message: error.response.statusText })
+        setLoading(false)
       }
-      setLoading(false)
     }
 
     fetchData()

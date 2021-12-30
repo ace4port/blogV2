@@ -1,0 +1,5 @@
+export { ImProfile } from 'react-icons/im'
+export { MdManageAccounts } from 'react-icons/md'
+export { MdContactSupport } from 'react-icons/md'
+export { FaComment } from 'react-icons/fa'
+export { FaDochub } from 'react-icons/fa'

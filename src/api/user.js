@@ -1,11 +1,15 @@
-import axios from "axios"
-const url = "https://blog-api7991.herokuapp.com/blog-api/accounts"
+import axios from 'axios'
+import { URL } from 'constants'
+const url = URL + '/accounts'
 
-export const register = ({ username, email, password, re_password }) =>
-  axios.post(`${url}/user_register/`, { username, email, password, re_password })
 export const logIn = ({ username, password }) => axios.post(`${url}/user_login/`, { username, password })
-export const logOut = () => axios.post(`${url}/user_logout`)
+
+export const register = ({ username, email, password }) =>
+  axios.post(`${url}/user_register/`, { username, email, password })
+
 export const refresh = (tokenR) => axios.post(`${url}/user_refresh_token/`, { refresh: tokenR })
+
+export const logOut = () => axios.post(`${url}/user_logout`)
 
 export const user = (id) => axios.get(`${url}/users/${id}/`)
 

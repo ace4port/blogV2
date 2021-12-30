@@ -41,8 +41,21 @@ const BlogBottom = ({ likes, comments, author, prev, next }) => {
 
       <div className="blogbottom__others">
         <div className="prevnext">
-          <BlogShortCard type="prev" title={prev?.title} created={'20 Dec'} id={prev?.id} />
-          <BlogShortCard type="next" title={next?.title} created={'20 Dec'} id={next?.id} />
+          <BlogShortCard
+            type="prev"
+            id={prev?.id}
+            title={prev?.title}
+            created={prev?.created_at}
+            thumbnail={prev?.thumbnail}
+          />
+
+          <BlogShortCard
+            type="next"
+            id={next?.id}
+            title={next?.title}
+            created={next?.created_at}
+            thumbnail={next?.thumbnail}
+          />
         </div>
         <p>related posts</p>
       </div>
@@ -52,10 +65,11 @@ const BlogBottom = ({ likes, comments, author, prev, next }) => {
 
 export default BlogBottom
 
-const BlogShortCard = ({ type, thumb, title, created }) => (
+const BlogShortCard = ({ type, id, thumbnail, title, created }) => (
   <div className="card">
+    {/* To do: add link to post page using id */}
     <p>{type} post</p>
-    <img src={thumb} alt="thumnail" />
+    <img src={thumbnail} alt="thumnail" />
     <h4>{title}</h4>
     <span>{created}</span>
   </div>
