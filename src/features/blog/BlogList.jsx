@@ -6,11 +6,13 @@ import React, { useEffect } from 'react'
 import { ImBin2, ImEye } from 'react-icons/im'
 import { MdModeEditOutline, MdOutlineAdd } from 'react-icons/md'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
-import { fetchBlogs } from './blogSlice'
+import { deleteBlog, fetchBlogs } from './blogSlice'
 
 const BlogList = () => {
   const dispatch = useDispatch()
+  const nav = useNavigate()
   const blogList = useSelector((state) => state.blog.blogsList)
   const blogListLoading = useSelector((state) => state.blog.status)
 
@@ -20,18 +22,18 @@ const BlogList = () => {
 
   const handleDelete = (id) => {
     Swal.fire({
-      title: 'Do you want to save the changes?',
-      showDenyButton: true,
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Save',
-      denyButtonText: `Don't save`,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        Swal.fire('Saved!', '', 'success')
-        // dispatch(deleteBlog(id))
-      } else if (result.isDenied) {
-        Swal.fire('Changes are not saved', '', 'info')
+        dispatch(deleteBlog(id))
+        // Show success, error message on failure
+        // Swal.fire('Deleted!', 'Your file has been deleted.', 'success')
       }
     })
   }
@@ -40,7 +42,7 @@ const BlogList = () => {
     <div>
       <h1>Blogs</h1>
       <div className="buttons">
-        <RoundButton>
+        <RoundButton handleClick={() => nav('create')}>
           <MdOutlineAdd />
           Create new blog
         </RoundButton>
@@ -106,7 +108,7 @@ const BlogList = () => {
                   <PlainButton>
                     <MdModeEditOutline />
                   </PlainButton>
-                  <PlainButton variant="danger" handleClick={handleDelete}>
+                  <PlainButton variant="danger" handleClick={() => handleDelete(blog.id)}>
                     <ImBin2 />
                   </PlainButton>
                 </td>

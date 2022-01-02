@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import { privateRoutes } from 'routes/privateRoutes'
 import { Copyright } from 'layout/Footer'
 import { MdDashboard } from 'react-icons/md'
@@ -42,7 +42,7 @@ const BreadCrumbs = ({ pathname }) => {
         .slice(1)
         .map((item, index) => (
           <span key={index}>
-            {item}
+            <Link to={item}>{item}</Link>
             {index !== pathname.split('/').length - 1 && <span> / </span>}
           </span>
         ))}

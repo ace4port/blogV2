@@ -1,16 +1,19 @@
 {
   "name": "blog",
   "version": "0.2.0",
-  "author": {"github": "ace4port"},
+  "author": {
+    "name": "Abdullah Waqar",
+    "github": "ace4port"
+  },
   "private": true,
   "dependencies": {
-    "@ckeditor/ckeditor5-react": "github:ckeditor/ckeditor5-react",
+    "@ckeditor/ckeditor5-build-classic": "^31.1.0",
+    "@ckeditor/ckeditor5-react": "^3.0.3",
     "@reduxjs/toolkit": "^1.7.1",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.24.0",
-    "ckeditor5-custom-build": "^0.0.6",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
