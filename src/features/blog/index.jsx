@@ -29,7 +29,7 @@ const Blogs = () => {
             }
           />
           <Route
-            path="edit/:id"
+            path=":id/edit"
             element={
               <Suspense fallback={<h2>Loading ... </h2>}>
                 <BlogEdit />

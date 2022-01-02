@@ -1,7 +1,7 @@
 import React from 'react'
 import useFetch from 'hooks/useFetch'
 import { useParams } from 'react-router-dom'
-import { fetchOne } from 'api'
+import { fetchOne } from 'features/blog/blogAPI'
 import { getDate } from 'functions/toDate'
 
 import BlogHead from 'components/_blog/BlogHead'
@@ -37,7 +37,7 @@ const Blog = () => {
 
 export default Blog
 
-const BlogMain = ({ blog }) => {
+export const BlogMain = ({ blog }) => {
   const blogImg =
     blog.thumbnail ??
     'https://images.pexels.com/photos/8929853/pexels-photo-8929853.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'
@@ -82,7 +82,7 @@ const BlogAside = ({ author }) => {
   )
 }
 
-const LoadingSkel = () => (
+export const LoadingSkel = () => (
   <div className="blog-container">
     <div className="blog-container__main">
       <Loader width={10} />

@@ -4,9 +4,9 @@ import Loader from 'components/ui/Loader'
 import { Spinner } from 'components/ui/loaders/Spinners'
 import React, { useEffect } from 'react'
 import { ImBin2, ImEye } from 'react-icons/im'
-import { MdModeEditOutline, MdOutlineAdd } from 'react-icons/md'
+import { MdModeEditOutline, MdOutlineAdd, MdRefresh } from 'react-icons/md'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { deleteBlog, fetchBlogs } from './blogSlice'
 
@@ -17,7 +17,8 @@ const BlogList = () => {
   const blogListLoading = useSelector((state) => state.blog.status)
 
   useEffect(() => {
-    if (!blogList.length) dispatch(fetchBlogs())
+    // if (!blogList.length) dispatch(fetchBlogs())
+    dispatch(fetchBlogs())
   }, [dispatch, blogList.length])
 
   const handleDelete = (id) => {
@@ -46,11 +47,16 @@ const BlogList = () => {
           <MdOutlineAdd />
           Create new blog
         </RoundButton>
-        <RoundButton variant="danger">
+
+        <RoundButton variant="disabled">
           <ImBin2 />
           Delete
         </RoundButton>
         <RoundButton variant="disabled">Logs</RoundButton>
+        <RoundButton variant="info" handleClick={() => dispatch(fetchBlogs())}>
+          <MdRefresh />
+          Refresh
+        </RoundButton>
       </div>
 
       {/*  To do: Implement actual filtering ... 
@@ -79,7 +85,13 @@ const BlogList = () => {
           </thead>
 
           <tbody>
-            {blogListLoading === 'loading' && <Spinner />}
+            {blogListLoading === 'loading' && (
+              <tr>
+                <td>
+                  <Spinner />
+                </td>
+              </tr>
+            )}
             {blogList.map((blog) => (
               <tr key={blog.id}>
                 <td>
@@ -92,7 +104,9 @@ const BlogList = () => {
                   {/* <Loader height={50} width={50} /> */}
                 </td>
                 <td>
-                  <h4>{blog.title}</h4>
+                  <Link to={`${blog.id}`}>
+                    <h4>{blog.title}</h4>
+                  </Link>
                   {blog.description}
                 </td>
                 <td>{new Date(blog.created_at).toDateString()}</td>
@@ -102,10 +116,11 @@ const BlogList = () => {
                 <td>{blog.category}</td>
 
                 <td>
-                  <PlainButton>
+                  <PlainButton handleClick={() => nav(`${blog.id}`)}>
                     <ImEye />
                   </PlainButton>
-                  <PlainButton>
+
+                  <PlainButton handleClick={() => nav(`${blog.id}/edit`)}>
                     <MdModeEditOutline />
                   </PlainButton>
                   <PlainButton variant="danger" handleClick={() => handleDelete(blog.id)}>
