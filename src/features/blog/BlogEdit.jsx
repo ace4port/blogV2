@@ -18,7 +18,7 @@ const BlogEdit = () => {
   const [blog, loading, error] = useFetch(fetchOne, id)
   useEffect(() => {
     const { title, description, category, body } = blog
-    setformdata({ title, description, category: parseInt(category?.id) })
+    setformdata({ title, description, category: parseInt(category?.id), body })
     // setData(blog.body)
   }, [blog, id])
 
