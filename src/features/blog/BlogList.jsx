@@ -2,7 +2,7 @@ import { PlainButton } from 'components/ui/Buttons'
 import { RoundButton } from 'components/ui/Buttons'
 import Loader from 'components/ui/Loader'
 import { Spinner } from 'components/ui/loaders/Spinners'
-import React, { useEffect } from 'react'
+import React, { Suspense, useEffect } from 'react'
 import { ImBin2, ImEye } from 'react-icons/im'
 import { MdModeEditOutline, MdOutlineAdd, MdRefresh } from 'react-icons/md'
 import { useDispatch, useSelector } from 'react-redux'
@@ -88,47 +88,49 @@ const BlogList = () => {
             {blogListLoading === 'loading' && (
               <tr>
                 <td>
-                  <Spinner />
+                  <h4>Loading...</h4>
                 </td>
               </tr>
             )}
-            {blogList.map((blog) => (
-              <tr key={blog.id}>
-                <td>
-                  {/* {JSON.stringify(blog)} */}
-                  <input type="checkbox" />
-                </td>
+            <Suspense fallback={<Spinner />}>
+              {blogList.map((blog) => (
+                <tr key={blog.id}>
+                  <td>
+                    {/* {JSON.stringify(blog)} */}
+                    <input type="checkbox" />
+                  </td>
 
-                <td>
-                  {blog.thumbnail ? <img src={blog.thumbnail} alt="thumbnail" /> : <Loader height={50} width={50} />}
-                  {/* <Loader height={50} width={50} /> */}
-                </td>
-                <td>
-                  <Link to={`${blog.id}`}>
-                    <h4>{blog.title}</h4>
-                  </Link>
-                  {blog.description}
-                </td>
-                <td>{new Date(blog.created_at).toDateString()}</td>
-                <td>{blog.views}</td>
-                <td>{blog?.likes && blog.likes.length}</td>
-                <td>{blog.comments}</td>
-                <td>{blog.category}</td>
+                  <td>
+                    {blog.thumbnail ? <img src={blog.thumbnail} alt="thumbnail" /> : <Loader height={50} width={50} />}
+                    {/* <Loader height={50} width={50} /> */}
+                  </td>
+                  <td>
+                    <Link to={`${blog.id}`}>
+                      <h4>{blog.title}</h4>
+                    </Link>
+                    {blog.description}
+                  </td>
+                  <td>{new Date(blog.created_at).toDateString()}</td>
+                  <td>{blog.views}</td>
+                  <td>{blog?.likes && blog.likes.length}</td>
+                  <td>{blog.comments}</td>
+                  <td>{blog.category}</td>
 
-                <td>
-                  <PlainButton handleClick={() => nav(`${blog.id}`)}>
-                    <ImEye />
-                  </PlainButton>
+                  <td>
+                    <PlainButton handleClick={() => nav(`${blog.id}`)}>
+                      <ImEye />
+                    </PlainButton>
 
-                  <PlainButton handleClick={() => nav(`${blog.id}/edit`)}>
-                    <MdModeEditOutline />
-                  </PlainButton>
-                  <PlainButton variant="danger" handleClick={() => handleDelete(blog.id)}>
-                    <ImBin2 />
-                  </PlainButton>
-                </td>
-              </tr>
-            ))}
+                    <PlainButton handleClick={() => nav(`${blog.id}/edit`)}>
+                      <MdModeEditOutline />
+                    </PlainButton>
+                    <PlainButton variant="danger" handleClick={() => handleDelete(blog.id)}>
+                      <ImBin2 />
+                    </PlainButton>
+                  </td>
+                </tr>
+              ))}
+            </Suspense>
           </tbody>
         </table>
       </div>

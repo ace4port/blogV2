@@ -9,7 +9,6 @@ const UIGuide = React.lazy(() => import('pages/Guide/UI'))
 export const privateRoutes = [
   {
     name: 'Posts',
-    icon: <ImProfile />,
     path: 'posts/*',
     component: <Blogs />,
   },
@@ -30,5 +29,28 @@ export const privateRoutes = [
     icon: <MdManageAccounts />,
     path: 'account',
     component: <Account />,
+  },
+]
+
+export const dashboardLinks = [
+  {
+    name: 'Posts',
+    icon: <ImProfile />,
+    path: 'posts',
+  },
+  {
+    name: 'Comments',
+    icon: <FaComment />,
+    path: 'comments',
+  },
+  {
+    name: 'Guide',
+    path: 'guide',
+    icon: <FaDochub />,
+  },
+  {
+    name: 'Account',
+    icon: <MdManageAccounts />,
+    path: 'account',
   },
 ]

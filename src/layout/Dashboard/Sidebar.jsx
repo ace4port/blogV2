@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { privateRoutes } from 'routes/privateRoutes'
+import { dashboardLinks } from 'routes/privateRoutes'
 import { Copyright } from 'layout/Footer'
 import { MdDashboard } from 'react-icons/md'
 
@@ -14,7 +14,7 @@ const Sidebar = ({ children }) => {
             <MdDashboard />
             Dashboard
           </NavLink>
-          {privateRoutes.map((route) => (
+          {dashboardLinks.map((route) => (
             <NavLink to={route.path} key={route.name} className="dashboard__aside-item">
               {route.icon && route.icon}
               {route.name}
