@@ -2,14 +2,11 @@ import React from 'react'
 import Error from 'pages/Error'
 
 const Blog = React.lazy(() => import('pages/Blog'))
-const BlogList = React.lazy(() => import('pages/Blog/BlogList'))
 const UI = React.lazy(() => import('pages/Guide/UI'))
-const Counter = React.lazy(() => import('features/counter/Counter'))
 const Login = React.lazy(() => import('features/auth/Login'))
+const BlogList = React.lazy(() => import('pages/Blog/BlogList'))
 const Register = React.lazy(() => import('features/auth/Register'))
-
-const Features = () => <div> ---------------- Features ----------------</div>
-const Portfolio = () => <div>---------------- Portfolio ----------------</div>
+const Features = React.lazy(() => import('pages/Features'))
 
 export const publicRoutes = [
   {
@@ -28,19 +25,9 @@ export const publicRoutes = [
     component: <Blog />,
   },
   {
-    name: 'Counter',
-    path: '/counter',
-    component: <Counter />,
-  },
-  {
     name: 'Features',
     path: '/features',
     component: <Features />,
-  },
-  {
-    name: 'Portfolio',
-    path: '/projects',
-    component: <Portfolio />,
   },
   {
     name: 'Log in',
@@ -61,15 +48,15 @@ export const publicRoutes = [
 
 export const navLinks = [
   {
-    name: 'Counter',
-    path: '/counter',
+    name: 'Blog',
+    path: '/blogs/2',
+  },
+  {
+    name: 'UI Guide',
+    path: '/guides',
   },
   {
     name: 'Features',
     path: '/features',
-  },
-  {
-    name: 'Portfolio',
-    path: '/projects',
   },
 ]

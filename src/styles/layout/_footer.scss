@@ -1,5 +1,9 @@
-.footer {
+.footerContainer {
   background-color: darken($primary, 10%);
+}
+.footer {
+  max-width: $max-width;
+  margin: 0 auto;
   &__main {
     padding: 2rem 1rem;
     display: flex;
@@ -13,11 +17,11 @@
       margin-right: 0.4rem;
     }
   }
-  &__bottom {
-    background-color: darken($primary, 20%);
-    text-align: center;
-    padding: 1rem 0;
-  }
+}
+.footer__bottom {
+  background-color: darken($primary, 20%);
+  text-align: center;
+  padding: 1rem 0;
 }
 
 .footIntro,
