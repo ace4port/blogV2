@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Editor from 'components/editor'
+// import Editor from 'components/editor'
 import Button from 'components/ui/Buttons'
 import Input from 'components/ui/input'
 import { categoryList, fetchCategory } from 'features/category/categorySlice'
@@ -67,7 +67,7 @@ export const PostForm = ({ formdata, _setValue, data, setData }) => {
         />
       </div>
 
-      <Editor data={data} setData={setData} />
+      {/* <Editor data={data} setData={setData} /> */}
     </>
   )
 }
