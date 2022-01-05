@@ -49,7 +49,7 @@ export const publicRoutes = [
 export const navLinks = [
   {
     name: 'Blog',
-    path: '/blogs/2',
+    path: '/blogs/6',
   },
   {
     name: 'UI Guide',
