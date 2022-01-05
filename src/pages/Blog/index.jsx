@@ -38,9 +38,7 @@ const Blog = () => {
 export default Blog
 
 export const BlogMain = ({ blog }) => {
-  const blogImg =
-    blog.thumbnail ??
-    'https://images.pexels.com/photos/8929853/pexels-photo-8929853.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'
+  const blogImg = blog.thumbnail ?? 'https://picsum.photos/1260/750?random'
   return (
     <div className="blog-container__main">
       <BlogHead

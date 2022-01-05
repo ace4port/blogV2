@@ -68,6 +68,19 @@ export const PostForm = ({ formdata, _setValue, data, setData }) => {
       </div>
 
       {/* <Editor data={data} setData={setData} /> */}
+      <div>
+        <label>Blog</label>
+        <sub> Rich text editor causing bugs right now</sub>
+        <Input
+          type="text"
+          name="body"
+          // error={errors.title}
+          value={formdata.body}
+          setValue={_setValue}
+          required={true}
+          label="Actual content of blog here ... "
+        />
+      </div>
     </>
   )
 }
