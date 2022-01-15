@@ -8,6 +8,7 @@ import { privateRoutes } from './privateRoutes'
 import { useSelector } from 'react-redux'
 import Dashboard from 'pages/Dashboard'
 import DashboardLayout from 'layout/Dashboard'
+import ErrorBoundary from 'components/ErrorBoundary'
 
 const RoutesList = () => {
   return (
@@ -17,7 +18,8 @@ const RoutesList = () => {
           <Route index element={<Home />} />
           {publicRoutes.map((route) => {
             const suspenseWrap = <Suspense fallback={<div>Loading ....</div>}>{route.component}</Suspense>
-            return <Route key={route.name} path={route.path} element={suspenseWrap} />
+            const errorWrap = <ErrorBoundary location={route.name}>{suspenseWrap}</ErrorBoundary>
+            return <Route key={route.name} path={route.path} element={errorWrap} />
           })}
         </Route>
 
@@ -32,7 +34,8 @@ const RoutesList = () => {
           <Route index element={<Dashboard />} />
           {privateRoutes.map((route) => {
             const suspenseWrap = <Suspense fallback={<div>Loading ....</div>}>{route.component}</Suspense>
-            return <Route key={route.name} path={route.path} element={suspenseWrap} />
+            const errorWrap = <ErrorBoundary location={route.name}>{suspenseWrap}</ErrorBoundary>
+            return <Route key={route.name} path={route.path} element={errorWrap} />
           })}
         </Route>
       </Routes>

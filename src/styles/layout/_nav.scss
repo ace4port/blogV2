@@ -1,12 +1,24 @@
-.nav {
+%contentbase {
   margin: 0 auto;
   max-width: $max-width;
+  background-color: $light;
+
   padding: 1rem;
+  margin-bottom: 5px;
+}
+
+.nav {
+  @extend %contentbase;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  margin-bottom: 0px;
+  border-bottom: 5px solid $bg-gray;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
-  // border-bottom: 1px solid $gray;
 
   div {
     display: flex;
@@ -48,15 +60,7 @@
 }
 
 .main {
-  min-height: 100vh;
+  @extend %contentbase;
 
-  margin: 0 auto;
-  max-width: $max-width;
-
-  padding-top: 3rem;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  @extend %flex-column-center;
 }

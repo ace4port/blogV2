@@ -1,25 +1,28 @@
 .blog-info {
+  @extend %flex-column;
   cursor: pointer;
-  min-width: 500px;
+  width: 500px;
   max-width: 500px;
   height: 350px;
 
-  display: flex;
-  flex-direction: column;
   border-radius: 0.5rem;
-
-  background-color: darken($light, 2);
-
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease-in-out;
+
+  background-color: darken($light, 8);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+
   &:hover {
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
-    background-color: $light;
-
+    background-color: darken($light, 2);
     h2 {
       color: $dark;
     }
   }
+
+  &-loading {
+    background-color: $light;
+  }
+
   h2 {
     margin: 0;
   }
@@ -37,15 +40,10 @@
   }
 
   .bottom {
-    display: flex;
-    align-items: center;
+    @extend %flex-center;
     justify-content: space-between;
-    flex-wrap: wrap;
 
     border-bottom: 1px solid $dark;
-
-    // mt-auto w-full justify-between dark:border-indigo-400
-
     .last-link {
       display: inline-flex;
       flex-direction: column;

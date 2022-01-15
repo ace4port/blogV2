@@ -4,7 +4,16 @@ const Features = () => {
   return (
     <div>
       <h1>Tech blog</h1>
-      <p>Tech stack: ReactJS on front and Django on back with PostGres as database</p>
+
+      <h2>Intro</h2>
+      <p>
+        Hi. This is a side project I and a friend is collaborating on. It contains all stuff I have learned on front end
+        and stuff I am currently learning. So somewhat like testing ground for me.
+      </p>
+
+      <h2>Tech stack</h2>
+      <p>ReactJS on front</p>
+      <p>Django on back with PostGres as database</p>
 
       <h4>
         Code by- <a href="https://github.com/ace4port/">ace4port</a> and{' '}

@@ -1,0 +1,10 @@
+.home {
+  .blogsContainer {
+    @extend %flex-center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    row-gap: 0;
+
+    min-height: 50vh;
+  }
+}

@@ -14,6 +14,12 @@ const UI = () => {
 
   return (
     <div>
+      <ul>
+        To do:
+        <li>Flex box items</li>
+        <li>Loaders, spinners</li>
+      </ul>
+
       <div>
         <h2>Typography</h2>
         <div className="container">

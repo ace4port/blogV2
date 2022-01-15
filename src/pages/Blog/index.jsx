@@ -4,20 +4,21 @@ import { useParams } from 'react-router-dom'
 import { fetchOne } from 'features/blog/blogAPI'
 import { getDate } from 'functions/toDate'
 
-import BlogHead from 'components/_blog/BlogHead'
-import BlogBody from 'components/_blog/BlogBody'
-import BlogBottom from 'components/_blog/BlogBottom'
+import BlogHead from './components/BlogHead'
+import BlogBody from './components/BlogBody'
+import BlogBottom from './components/BlogBottom'
 import CommentSection from 'features/comments/'
 
 import TopPostsCard from 'components/_blog/Cards/TopPosts'
 import AuthorInfoCard from 'components/_blog/Cards/AuthorInfoCard'
 import CategoriesCard from 'components/_blog/Cards/CategoriesCard'
 import Loader from 'components/ui/Loader'
+import { TodoList } from './BlogList'
 
 const Blog = () => {
   const { id } = useParams()
   const [data, loading, error] = useFetch(fetchOne, id)
-  // todo: Thumbnail make it base64
+
   return (
     <div>
       {loading && <LoadingSkel />}
@@ -71,7 +72,11 @@ const BlogAside = ({ author }) => {
   return (
     <div className="blog-container__aside">
       {/* Search bar component -- */}
-      <AuthorInfoCard avatar={author?.avatar} name={author?.full_name} description={author?.description} />
+      <div className="card">
+        <TodoList items={['Rich text editor', 'Image to base64', 'Cleanup', 'Share', 'Like']} />
+      </div>
+
+      <AuthorInfoCard avatar={author?.thumbnail} name={author?.full_name} description={author?.description} />
       <CategoriesCard />
       <TopPostsCard />
       {/* <FollowUsCard /> */}

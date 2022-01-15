@@ -7,8 +7,8 @@ const Footer = () => {
       <div className="footer">
         <div className="footer__main">
           <div className="footIntro">
-            <h2>logo.</h2>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui dicta porro sint consequatur recusandae.
+            <h2>techBlog.</h2>
+            News, Views, articles and reviews for all of your tech needs. All in one place. Right here
           </div>
 
           <div className="footContact">
@@ -31,11 +31,10 @@ const Footer = () => {
             </p>
           </div>
           <div className="footSupport">
-            <h4>Support and Downloads</h4>
+            <h4>Support and Feedback</h4>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi soluta porro reiciendis temporibus minima,
-              odit adipisci vitae. Quaerat corrupti atque asperiores consectetur! Corrupti dolor fuga laborum, ad
-              voluptatum distinctio esse?
+              We would love to head your feedback and reviews. It helps us improve, learn and correct any bugs or errors
+              you encounter. Mail them <a href="mailto:ace4port@gmail.com">here</a>
             </p>
           </div>
         </div>
@@ -49,6 +48,6 @@ export default Footer
 
 export const Copyright = () => (
   <div className="footer__bottom">
-    <p>&copy; ace4port and STmg. All rights reserved</p>
+    <p>&copy; ace4port and STmg {new Date().getFullYear()}. All rights reserved</p>
   </div>
 )

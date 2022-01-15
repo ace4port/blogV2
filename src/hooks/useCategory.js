@@ -7,6 +7,7 @@ const useCategory = (category) => {
   const categoryList = useSelector((state) => state.category.categoryList)
   useEffect(() => !categoryList.length && dispatch(fetchCategory()), [dispatch, categoryList.length])
   const categoryName = categoryList.find((cat) => cat.id === category)?.c_name
+
   return categoryName
 }
 

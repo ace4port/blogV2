@@ -1,14 +1,27 @@
 import React from 'react'
+import useCategory from 'hooks/useCategory'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchCategory } from 'features/category/categorySlice'
+import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
-const CategoriesCard = ({ categories = ['Tech', 'Programming', 'Uncategorized'] }) => {
+const CategoriesCard = () => {
+  const dispatch = useDispatch()
+  const categories = useSelector((state) => state.category.categoryList)
+
+  useEffect(() => !categories.length && dispatch(fetchCategory()), [dispatch, categories.length])
+
   return (
     <div className="card categoriesCard">
-      <h4>Post Categories</h4>
-      <ul>
-        {categories.map((category, index) => (
-          <li key={index}>{category}</li>
+      <h4>Browse Categories</h4>
+
+      <div className="flex-col">
+        {categories.map((category) => (
+          <Link to={`/category/${category.id}`} key={category.id}>
+            {category.c_name}
+          </Link>
         ))}
-      </ul>
+      </div>
     </div>
   )
 }

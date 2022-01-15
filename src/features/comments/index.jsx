@@ -18,10 +18,20 @@ const CommentSection = () => {
   return (
     <div>
       <h3>Comments ({commentList.length})</h3>
+      <span>
+        <sub>*Comments have to be approved before they appear here</sub>
+      </span>
+
       <CommentForm />
-      {commentList.length &&
-        commentList.map((comment) => comment.is_visible && <Comment key={comment.id} comment={comment} />)}
-      <span>Comments are not visible here unless approved to avoid spam, hate comments</span>
+
+      <div className="card comments">
+        {commentList.length ? (
+          commentList.map((comment) => comment.is_visible && <Comment key={comment.id} comment={comment} />)
+        ) : (
+          <span>wow so empty</span>
+        )}
+      </div>
+
       <br />
       <br />
     </div>
@@ -35,17 +45,19 @@ const CommentForm = () => {
   const { id } = useParams()
   const [formdata, setformdata] = useState({ full_name: '', email: '', comment: '' })
   const _handleChange = (e) => setformdata({ ...formdata, [e.target.name]: e.target.value })
+
   const handleSubmit = (e) => {
     e.preventDefault()
     dispatch(createComment({ ...formdata, post: id }))
   }
 
   return (
-    <form onSubmit={handleSubmit} className="comment-form">
-      <h5>Leave a comment</h5>
+    <form onSubmit={handleSubmit} className="card comment-form">
+      <h4>Leave a comment</h4>
+
       <textarea name="content" value={formdata.content} onChange={_handleChange} placeholder="Comment" required />
 
-      <div className="comment-form__footer">
+      <div className="comment-form__bottom">
         <div>
           <label htmlFor="full_name">Full Name: </label>
           <input
@@ -57,6 +69,7 @@ const CommentForm = () => {
             required
           />
         </div>
+
         <div>
           <label htmlFor="email">E-mail: </label>
           <input
@@ -69,7 +82,10 @@ const CommentForm = () => {
           />
         </div>
       </div>
-      <Button type="submit">Submit</Button>
+
+      <div className="comment-form__submit">
+        <Button type="submit">Submit</Button>
+      </div>
     </form>
   )
 }
