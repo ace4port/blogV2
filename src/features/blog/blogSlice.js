@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { createPost, deletePost, editPost, fetchPosts } from './blogAPI'
+import { createPost, deletePost, editPost, fetchMyPosts, fetchPosts } from './blogAPI'
 import { fireToast } from 'components/ui/Toast'
 
 const initialState = {
@@ -9,6 +9,11 @@ const initialState = {
 
 export const fetchBlogs = createAsyncThunk('blog/fetchAll', async (amount) => {
   const response = await fetchPosts(amount)
+  return response.data
+})
+
+export const fetchMyBlogs = createAsyncThunk('blog/my/fetchAll', async (amount) => {
+  const response = await fetchMyPosts(amount)
   return response.data
 })
 
@@ -55,6 +60,14 @@ export const blogSlice = createSlice({
         state.prev = action.payload?.previous
       })
 
+      .addCase(fetchMyBlogs.fulfilled, (state, action) => {
+        state.status = 'idle'
+        state.count = action.payload.count
+        state.blogsList = action.payload?.results
+        state.next = action.payload?.next
+        state.prev = action.payload?.previous
+      })
+
       .addCase(deleteBlog.pending, (state) => {
         state.status = 'loading'
       })
@@ -62,7 +75,6 @@ export const blogSlice = createSlice({
         state.status = 'success'
         state.count -= 1
         state.blogsList = [...state.blogsList.filter((blog) => blog.id !== action.payload)]
-        setTimeout(() => (state.status = 'idle'), 2000)
       })
 
       .addCase(createBlog.pending, (state) => {
@@ -72,7 +84,6 @@ export const blogSlice = createSlice({
         state.status = 'success'
         state.count += 1
         state.blogsList = [action.payload, ...state.blogsList]
-        setTimeout(() => (state.status = 'idle'), 2000)
       })
 
       .addCase(editBlog.pending, (state) => {

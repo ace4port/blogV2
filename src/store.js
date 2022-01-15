@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import counterReducer from 'features/counter/counterSlice'
 import authReducer from 'features/auth/authSlice'
 import blogReducer from 'features/blog/blogSlice'
+import commentReducer from 'features/comments/commentSlice'
 import categoryReducer from 'features/category/categorySlice'
 
 export const store = configureStore({
@@ -10,5 +11,6 @@ export const store = configureStore({
     auth: authReducer,
     category: categoryReducer,
     blog: blogReducer,
+    comment: commentReducer,
   },
 })

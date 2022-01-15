@@ -1,22 +1,24 @@
 import React, { useState } from 'react'
-// import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { fireToast } from 'components/ui/Toast'
+import { logOut } from 'features/auth/authSlice'
+
 import Avatar from 'components/ui/Avatar'
 import Dropdown from 'components/ui/Menu/Dropdown'
+import { PlainButton } from 'components/ui/Buttons'
 import { DropdownItem } from 'components/ui/Menu/Dropdown'
 
-import { BsCaretDown, BsCaretUpFill } from 'react-icons/bs'
-import { PlainButton } from 'components/ui/Buttons'
 import { ImProfile } from 'react-icons/im'
-import { MdOutlineLiveHelp, MdOutlinePassword } from 'react-icons/md'
 import { RiLogoutBoxLine } from 'react-icons/ri'
 import { AiFillApi } from 'react-icons/ai'
-import { logOut } from 'features/auth/authSlice'
-import { fireToast } from 'components/ui/Toast'
-import { useDispatch } from 'react-redux'
+import { BsCaretDown, BsCaretUpFill } from 'react-icons/bs'
+import { MdOutlineLiveHelp, MdOutlinePassword } from 'react-icons/md'
 
 const NavBar = ({ sitename = 'My Site' }) => {
   const dispatch = useDispatch()
+
+  // useEffect(() => !user && dispatch())
 
   const handleLogOut = (e) => {
     e.preventDefault()
@@ -35,7 +37,7 @@ const NavBar = ({ sitename = 'My Site' }) => {
         {/* <BsSearch /> */}
         {/* <MdOutlineNotificationAdd /> */}
 
-        <NavItem>
+        <NavItem name={JSON.parse(localStorage.getItem('user'))?.username}>
           {(open, close) => (
             <Dropdown open={open} close={close}>
               <DropdownItem>

@@ -9,6 +9,7 @@ export const fetchOne = (id) => axios.get(`${url}/${id}/`)
 export const fetchTopPosts = () => axios.get(`${url}/top_posts`)
 // export const fetchPosts = (page) => axios.get(`${url}?limit=5/${page ? `%2F&page=${page}` : ''}`)
 export const fetchPosts = () => axios.get(`${url}`)
+export const fetchMyPosts = () => axios.get(`${url}/?user=${JSON.parse(localStorage.getItem('user')).id}`)
 
 export const createPost = (newPost) => axios.post(`${url}/`, newPost, getConfig())
 

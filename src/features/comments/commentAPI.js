@@ -1,9 +1,16 @@
+import { getConfig } from 'api'
 import axios from 'axios'
-const url = 'https://blog-api7991.herokuapp.com/blog-api'
+import { URL } from 'constants'
+
+const url = URL + '/comments'
 
 // comment crud
-export const fetchComments = (id) => axios.get(`${url}/posts/${id}/comments/`)
-export const postComment = (comment, config) => axios.post(`${url}/comments/`, comment, config)
+export const fetchComments = (id) => axios.get(url + '/?post=' + id)
+export const getMyComments = () => axios.get(url + '/?post=')
+
+export const postComment = (comment) => axios.post(`${url}/comments/`, comment, getConfig())
+export const postCommentNotLogged = (comment) => axios.post(url + '/', comment)
+
 export const updateComment = (id, comment, config) => axios.patch(`${url}/comments/${id}/`, comment, config)
 export const deleteComment = (id, config) => axios.delete(`${url}/comments/${id}/`, config)
 

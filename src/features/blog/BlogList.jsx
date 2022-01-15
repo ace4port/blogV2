@@ -1,14 +1,15 @@
-import { PlainButton } from 'components/ui/Buttons'
-import { RoundButton } from 'components/ui/Buttons'
-import Loader from 'components/ui/Loader'
-import { Spinner } from 'components/ui/loaders/Spinners'
 import React, { Suspense, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import Swal from 'sweetalert2'
+
 import { ImBin2, ImEye } from 'react-icons/im'
 import { MdModeEditOutline, MdOutlineAdd, MdRefresh } from 'react-icons/md'
-import { useDispatch, useSelector } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
-import Swal from 'sweetalert2'
-import { deleteBlog, fetchBlogs } from './blogSlice'
+
+import Loader from 'components/ui/Loader'
+import { Spinner } from 'components/ui/loaders/Spinners'
+import { RoundButton, PlainButton } from 'components/ui/Buttons'
+import { deleteBlog, fetchBlogs, fetchMyBlogs } from './blogSlice'
 
 const BlogList = () => {
   const dispatch = useDispatch()
@@ -17,8 +18,7 @@ const BlogList = () => {
   const blogListLoading = useSelector((state) => state.blog.status)
 
   useEffect(() => {
-    // if (!blogList.length) dispatch(fetchBlogs())
-    dispatch(fetchBlogs())
+    dispatch(fetchMyBlogs())
   }, [dispatch, blogList.length])
 
   const handleDelete = (id) => {
@@ -33,8 +33,7 @@ const BlogList = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         dispatch(deleteBlog(id))
-        // Show success, error message on failure
-        // Swal.fire('Deleted!', 'Your file has been deleted.', 'success')
+        Swal.fire('warning', 'Your file has been deleted.')
       }
     })
   }

@@ -16,7 +16,8 @@ const BlogCreate = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log({ ...formdata, body: data })
-    dispatch(createBlog({ ...formdata, body: data }))
+    // dispatch(createBlog({ ...formdata, body: data }))
+    dispatch(createBlog({ ...formdata }))
   }
 
   return (
