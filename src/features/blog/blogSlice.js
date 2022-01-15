@@ -1,14 +1,20 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { createPost, deletePost, editPost, fetchMyPosts, fetchPosts } from './blogAPI'
+import { createPost, deletePost, editPost, fetchMyPosts, fetchPosts, fetchTopPosts } from './blogAPI'
 import { fireToast } from 'components/ui/Toast'
 
 const initialState = {
   status: 'idle',
   blogsList: [],
+  topBlogs: [],
 }
 
 export const fetchBlogs = createAsyncThunk('blog/fetchAll', async (amount) => {
   const response = await fetchPosts(amount)
+  return response.data
+})
+
+export const fetchTopBlogs = createAsyncThunk('blog/fetch/top', async () => {
+  const response = await fetchTopPosts()
   return response.data
 })
 
@@ -66,6 +72,14 @@ export const blogSlice = createSlice({
         state.blogsList = action.payload?.results
         state.next = action.payload?.next
         state.prev = action.payload?.previous
+      })
+
+      .addCase(fetchTopBlogs.pending, (state, action) => {
+        state.status = 'loading'
+      })
+      .addCase(fetchTopBlogs.fulfilled, (state, action) => {
+        state.status = 'idle'
+        state.topBlogs = action.payload
       })
 
       .addCase(deleteBlog.pending, (state) => {

@@ -1,7 +1,9 @@
 import React from 'react'
 import { FaTwitter, FaLinkedin, FaHeart, FaFacebookF, FaCommentAlt, FaRegCommentAlt, FaRegHeart } from 'react-icons/fa'
 import { PlainButton } from 'components/ui/Buttons'
-import AuthorInfoCard from './Cards/AuthorInfoCard'
+import AuthorInfoCard from 'components/_blog/Cards/AuthorInfoCard'
+import { Link } from 'react-router-dom'
+import { getDate } from 'functions/toDate'
 
 const BlogBottom = ({ likes, comments, author, prev, next }) => {
   return (
@@ -9,12 +11,19 @@ const BlogBottom = ({ likes, comments, author, prev, next }) => {
       <div className="blogbottom__info">
         <div className="icons">
           <p>
-            Share
-            <FaFacebookF />
-            <FaTwitter />
-            <FaLinkedin />
+            Spread the word
+            <a target="_blank" rel="noreferrer" href="https://twitter.com/intent/tweet">
+              <FaFacebookF />
+            </a>
+            <a target="_blank" rel="noreferrer" href="https://twitter.com/intent/tweet">
+              <FaTwitter />
+            </a>
+            <a target="_blank" rel="noreferrer" href="https://twitter.com/intent/tweet">
+              <FaLinkedin />
+            </a>
           </p>
         </div>
+
         <div className="icons">
           <p>
             {+comments ? <FaCommentAlt /> : <FaRegCommentAlt />}
@@ -26,23 +35,16 @@ const BlogBottom = ({ likes, comments, author, prev, next }) => {
           </p>
         </div>
       </div>
+      <hr />
 
       <div className="blogbottom__author">
         <AuthorInfoCard thumb={author?.avatar} name={author?.full_name} info={author?.description} id={author?.id} />
-        {/* <p>avatar</p>
-        <div>
-          <p>name</p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga accusantium pariatur sit id officia a saepe
-            debitis asperiores blanditiis est.{' '}
-          </p>  
-        </div> */}
       </div>
 
       <div className="blogbottom__others">
         <div className="prevnext">
           <BlogShortCard
-            type="prev"
+            type="⏮ Prev post "
             id={prev?.id}
             title={prev?.title}
             created={prev?.created_at}
@@ -50,14 +52,14 @@ const BlogBottom = ({ likes, comments, author, prev, next }) => {
           />
 
           <BlogShortCard
-            type="next"
+            type="Next post ⏭"
             id={next?.id}
             title={next?.title}
             created={next?.created_at}
             thumbnail={next?.thumbnail}
           />
         </div>
-        <p>related posts</p>
+        <p>Future feature- related posts</p>
       </div>
     </div>
   )
@@ -66,11 +68,12 @@ const BlogBottom = ({ likes, comments, author, prev, next }) => {
 export default BlogBottom
 
 const BlogShortCard = ({ type, id, thumbnail, title, created }) => (
-  <div className="card">
-    {/* To do: add link to post page using id */}
-    <p>{type} post</p>
-    <img src={thumbnail} alt="thumnail" />
-    <h4>{title}</h4>
-    <span>{created}</span>
-  </div>
+  <Link to={`/blog/${id}`}>
+    <div className="card">
+      <p>{type}</p>
+      {thumbnail && <img src={thumbnail} alt="thumnail" />}
+      <h4>{title}</h4>
+      <span>{getDate(created)}</span>
+    </div>
+  </Link>
 )

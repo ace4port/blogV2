@@ -4,9 +4,9 @@
 }
 
 .avatarContainer {
-  margin-bottom: 3rem;
   border-radius: 50%;
 
+  @include dimension(40px);
   &.large {
     @include dimension(140px);
   }

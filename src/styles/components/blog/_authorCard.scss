@@ -1,8 +1,13 @@
 .authorCard {
-  &__name {
-    margin-bottom: 1rem;
-  }
-  &__info {
-    margin-top: 0rem;
+  cursor: pointer;
+  width: fit-content;
+  flex-direction: row;
+  padding-left: 0.5em;
+
+  &:hover {
+    background-color: darken($light, 5%);
+    h4 {
+      color: $dark;
+    }
   }
 }

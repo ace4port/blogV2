@@ -1,0 +1,25 @@
+.comment-form {
+  align-items: flex-start;
+
+  padding: 0 1rem;
+
+  input,
+  textarea {
+    &:focus {
+      border-color: $light;
+      //   outline: 1px solid $text-secondary;
+    }
+  }
+
+  &__bottom {
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__submit {
+    justify-content: flex-end;
+    padding: 1rem 0;
+  }
+}

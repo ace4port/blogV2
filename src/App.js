@@ -1,14 +1,12 @@
 import React from 'react'
-
-import Routes from 'routes'
-import ErrorBoundary from 'components/ErrorBoundary'
-
+import { Provider } from 'react-redux'
+import { store } from 'store'
 import { fireToast } from 'components/ui/Toast'
 import { useIsOnline } from 'hooks/useIsOnline'
 
+import Routes from 'routes'
+import ErrorBoundary from 'components/ErrorBoundary'
 import 'styles/main.scss'
-import { Provider } from 'react-redux'
-import { store } from 'store'
 
 function App() {
   const isOnline = useIsOnline()
@@ -21,10 +19,16 @@ function App() {
   //   fireToast('success', 'You are online')
   // }
 
+  if (!isOnline) {
+    return <h1>Sorry. You are offline</h1>
+  }
+
   return (
     <ErrorBoundary location="app">
       <Provider store={store}>
-        <Routes />
+        <ErrorBoundary location="routes">
+          <Routes />
+        </ErrorBoundary>
       </Provider>
     </ErrorBoundary>
   )
