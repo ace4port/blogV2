@@ -1,7 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
-import counterReducer from 'features/counter/counterSlice'
+
 import authReducer from 'features/auth/authSlice'
 import blogReducer from 'features/blog/blogSlice'
+import counterReducer from 'features/counter/counterSlice'
 import commentReducer from 'features/comments/commentSlice'
 import categoryReducer from 'features/category/categorySlice'
 

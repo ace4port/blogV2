@@ -14,6 +14,7 @@ function App() {
   if (!isOnline) {
     fireToast('warning', 'You are offline')
   }
+
   // make it not fire on start of app
   // if (isOnline) {
   //   fireToast('success', 'You are online')
