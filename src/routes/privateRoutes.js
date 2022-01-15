@@ -2,7 +2,7 @@ import React from 'react'
 
 import { ImProfile, FaComment, MdManageAccounts, FaDochub } from 'components/icons'
 const Blogs = React.lazy(() => import('features/blog'))
-const Comments = React.lazy(() => import('features/comments'))
+const Comments = React.lazy(() => import('features/comments/CommentList'))
 const Account = React.lazy(() => import('features/account'))
 const UIGuide = React.lazy(() => import('pages/Guide/UI'))
 

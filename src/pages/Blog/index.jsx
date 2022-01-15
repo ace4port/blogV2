@@ -7,7 +7,7 @@ import { getDate } from 'functions/toDate'
 import BlogHead from 'components/_blog/BlogHead'
 import BlogBody from 'components/_blog/BlogBody'
 import BlogBottom from 'components/_blog/BlogBottom'
-import CommentSection from 'components/_blog/CommentSection'
+import CommentSection from 'features/comments/'
 
 import TopPostsCard from 'components/_blog/Cards/TopPosts'
 import AuthorInfoCard from 'components/_blog/Cards/AuthorInfoCard'
